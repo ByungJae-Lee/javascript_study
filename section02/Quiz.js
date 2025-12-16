@@ -1,10 +1,18 @@
-const book = {
-  title: '한 입 크기로 잘라먹는 리액트',
-  author: '이정환',
-};
+function printAvgScore(students) {
+  for (let name in students) {
+    let sum = 0;
+    const { scores } = students[name];
 
-if ('publishedYear' in book) {
-  console.log(`출판년도는 ${book.publishedYear}입니다.`);
-} else {
-  console.log('출판년도 정보가 없습니다.');
+    for (let score of scores) {
+      sum += score;
+    }
+    const avg = sum / scores.length;
+    console.log(`${name}: ${avg}`);
+  }
 }
+
+printAvgScore({
+  이정환: { hobby: '테니스', scores: [10, 20, 30, 40, 50] },
+  김효빈: { hobby: '테니스', scores: [90, 80, 30, 70, 50] },
+  홍길동: { hobby: '의적', scores: [100, 100, 20, 20, 50] },
+});
